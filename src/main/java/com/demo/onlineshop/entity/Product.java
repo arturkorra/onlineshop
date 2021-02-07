@@ -4,17 +4,19 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Positive;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-
+@Entity
+@Table(name = "product_table")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +35,7 @@ public class Product {
 
 	@CreatedBy
 	@Column(name = "created_by")
-	private User createdBy;
+	private String createdBy;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -41,13 +43,12 @@ public class Product {
 
 	@LastModifiedBy
 	@Column(name = "last_modified_by")
-	private User lastModifiedBy;
+	private String lastModifiedBy;
 
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	private Date lastModifiedDate;
 
-	@Positive
 	@Min(value = 0)
 	@Column(name = "product_quantity")
 	private int quantity;
@@ -92,11 +93,11 @@ public class Product {
 		this.catergoryType = catergoryType;
 	}
 
-	public User getCreatedBy() {
+	public String getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(User createdBy) {
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -108,11 +109,11 @@ public class Product {
 		this.createdDate = createdDate;
 	}
 
-	public User getLastModifiedBy() {
+	public String getLastModifiedBy() {
 		return lastModifiedBy;
 	}
 
-	public void setLastModifiedBy(User lastModifiedBy) {
+	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
 	}
 
